@@ -1,0 +1,27 @@
+<p>Table Works!</p>
+<nz-table
+  #basicTable
+  [nzData]="ListOfData"
+  [nzShowPagination]="true"
+  [nzPageSize]="3"
+>
+  <thead>
+    <tr>
+      <th
+        *ngFor="let column of listOfColumns"
+        [nzWidth]="column.width"
+        [nzSortOrder]="column.sortOrder"
+        [ngClass]="column.class"
+        [nzSortDirections]="column.sortDirections"
+        (nzSortOrderChange)="nzSortChange($event, column)"
+      >
+        {{ column.name }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of basicTable.data">
+      <td *ngFor="let col of listOfColumns">{{ row[col["field"]] }}</td>
+    </tr>
+  </tbody>
+</nz-table>

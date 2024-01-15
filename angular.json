@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "da46c516-0f20-4c73-9561-e2271a07b008"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-demo": {
+    "my-first-project": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-demo",
+            "outputPath": "dist/my-first-project",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,10 +28,15 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
-              "src/styles.css"
+              "src/theme.less"
             ],
             "scripts": []
           },
@@ -65,18 +73,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-demo:build"
+            "browserTarget": "my-first-project:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-demo:build:production"
+              "browserTarget": "my-first-project:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-demo:build"
+            "browserTarget": "my-first-project:build"
           }
         },
         "test": {
@@ -113,16 +121,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-demo:serve"
+            "devServerTarget": "my-first-project:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-demo:serve:production"
+              "devServerTarget": "my-first-project:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "angular-demo"
+  "defaultProject": "my-first-project"
 }

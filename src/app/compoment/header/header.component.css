@@ -1,0 +1,9 @@
+.ant-layout-header{
+  background-color: aliceblue;
+}
+.ant-menu.ant-menu-dark{
+  background-color: aliceblue;
+}
+.ant-menu-dark .ant-menu-item > a{
+  color: #001529;
+}
