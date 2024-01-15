@@ -1,0 +1,71 @@
+<nz-form-item>
+  <ng-container *ngIf="!hideLabel && !isFloatingInput">
+    <app-label-vertical *ngIf="!labelHorizontal" nz-col nzSpan="24" [content]="labelContent" [required]="required"></app-label-vertical>
+    <app-label-horizontal
+      nz-col
+      [nzSpan]="24 - span"
+      *ngIf="labelHorizontal"
+      [content]="labelContent"
+      [required]="required"
+      (keyup.enter)="handleChange()"
+      (focusout)="handleChange()"
+    >
+    </app-label-horizontal>
+  </ng-container>
+  <nz-form-control
+    [nzSpan]="!hideLabel ? (labelHorizontal ? span : 24) : null"
+    [nzErrorTip]="errorTipsArr ? errorTipTpl : errorTip"
+    [ngClass]="[classInput]"
+  >
+    <ng-container *ngIf="isFloatingInput">
+      <nz-input-group appFloatingInputGroup [nzAddOnAfter]="isAddOn ? addOn : ''">
+        <label>{{ labelContent }}<span *ngIf="required" class="text-red"> (*)</span></label>
+        <nz-input-number
+          nz-input
+          #floatingInput
+          type="number"
+          [nzDisabled]="disabled"
+          class="w-100"
+          [formControl]="ngControl.control"
+          [nzMin]="min"
+          [nzMax]="max"
+          [nzStep]="step"
+          [nzPlaceHolder]="placeHolder"
+          [nzFormatter]="formatterQuantity"
+          [nzParser]="parserQuantity"
+          (keyup.enter)="handleChange()"
+          (focusout)="handleChange()"
+          [nzPlaceHolder]="placeholder"
+          (nzBlur)="handleBlur(floatingInput.value)"
+        >
+        </nz-input-number>
+      </nz-input-group>
+    </ng-container>
+    <ng-container *ngIf="!isFloatingInput">
+      <nz-input-group [nzAddOnAfter]="isAddOn ? addOn : ''">
+        <nz-input-number
+          #input
+          [nzDisabled]="disabled"
+          class="w-100"
+          [formControl]="ngControl.control"
+          [nzMin]="min"
+          [nzMax]="max"
+          [nzStep]="step"
+          [nzPlaceHolder]="placeHolder"
+          [nzFormatter]="formatterQuantity"
+          [nzParser]="parserQuantity"
+          (keyup.enter)="handleChange()"
+          (focusout)="handleChange()"
+          (nzBlur)="handleBlur(input.value)"
+        >
+        </nz-input-number>
+      </nz-input-group>
+    </ng-container>
+  </nz-form-control>
+</nz-form-item>
+
+<ng-template #addOn>
+  <span class="ml-2 mr-2">{{ addOnText }}</span>
+</ng-template>
+<ng-template #errorTipTpl>
+</ng-template>

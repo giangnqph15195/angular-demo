@@ -20,8 +20,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of basicTable.data">
+    <ng-container *ngFor="let row of basicTable.data">
+    <tr   ngClass='row-table-selected'>
       <td *ngFor="let col of listOfColumns">{{ row[col["field"]] }}</td>
     </tr>
+    </ng-container>
   </tbody>
 </nz-table>

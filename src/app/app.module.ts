@@ -83,6 +83,12 @@ import { Currency } from './shared/currencyhook.pipes';
 import { UserComponent } from './page/user/user.component';
 import { TableSortComponent } from './compoment/table-sort/table-sort.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LabelHorizontalComponent } from './compoment/labels/label-horizontal/label-horizontal.component';
+import { LabelVerticalComponent } from './compoment/labels/label-vertical/label-vertical.component';
+import { InputTextComponent } from './compoment/inputs/input-text/input-text.component';
+import { InputNumberComponent } from './compoment/inputs/input-number/input-number.component';
+import { InputTextareaComponent } from './compoment/inputs/input-textarea/input-textarea.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,6 +102,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Currency,
     UserComponent,
     TableSortComponent,
+    InputTextComponent,
+    InputTextareaComponent,
+    InputNumberComponent,
+    LabelHorizontalComponent,
+    LabelVerticalComponent,
   ],
   imports: [
     BrowserModule,

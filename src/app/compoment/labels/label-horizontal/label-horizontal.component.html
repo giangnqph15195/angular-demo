@@ -1,0 +1,9 @@
+<nz-form-label [nzRequired]="required" [nzNoColon]="noColon" [nzFor]="for" [nzSpan]="24" [ngClass]="classLabel">
+  <ng-container *ngIf="contentTpl; else elseTpl">
+    <ng-container [ngTemplateOutlet]="contentTpl"></ng-container>
+  </ng-container>
+
+  <ng-template #elseTpl>
+    <span>{{ content }}</span>
+  </ng-template>
+</nz-form-label>

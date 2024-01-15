@@ -1,0 +1,48 @@
+<nz-form-item>
+  <ng-container *ngIf="!hideLabel && !isFloatingInput">
+    <app-label-vertical *ngIf="!labelHorizontal" nz-col [nzSpan]="24" [content]="labelContent | translate" [required]="required">
+    </app-label-vertical>
+
+    <app-label-horizontal *ngIf="labelHorizontal" [content]="labelContent | translate" [required]="required" nz-col [nzSpan]="24 - span">
+    </app-label-horizontal>
+  </ng-container>
+  <nz-form-control [nzSpan]="hideLabel ? null : labelHorizontal ? span : null" [nzErrorTip]="errorTipsArr ? errorTipTpl : errorTip">
+    <ng-container *ngIf="!isFloatingInput">
+      <!-- <nz-textarea-count> -->
+      <textarea
+        #input
+        class="w-100"
+        nz-input
+        [nzAutosize]="{ minRows: minRows, maxRows: maxRows }"
+        placeholder="{{ placeHolder | translate }}"
+        [attr.disabled]="disabled ? '' : null"
+        [formControl]="ngControl.control"
+        (keyup.enter)="handleChange()"
+        (focusout)="handleChange()"
+        (blur)="handleBlur(input.value)"
+      ></textarea>
+      <!-- </nz-textarea-count> -->
+    </ng-container>
+    <ng-container *ngIf="isFloatingInput">
+      <label>{{ labelContent }}</label>
+      <!-- <nz-textarea-count> -->
+      <textarea
+        #floatingInput
+        class="w-100"
+        appFloatingInputFormControl
+        nz-input
+        [nzAutosize]="{ minRows: minRows, maxRows: maxRows }"
+        placeholder="{{ placeHolder | translate }}"
+        [attr.disabled]="disabled ? '' : null"
+        [formControl]="ngControl.control"
+        (keyup.enter)="handleChange()"
+        (focusout)="handleChange()"
+        (blur)="handleBlur(floatingInput.value)"
+      ></textarea>
+      <!-- </nz-textarea-count> -->
+    </ng-container>
+  </nz-form-control>
+</nz-form-item>
+<ng-template #errorTipTpl>
+  <app-error-tips [error]="ngControl?.control?.errors" [labelContent]="labelContent" [errorTipsArr]="errorTipsArr"></app-error-tips>
+</ng-template>
