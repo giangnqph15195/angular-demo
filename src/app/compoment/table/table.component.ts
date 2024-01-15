@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   Input,
+  Output,
 } from '@angular/core';
+import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-table',
@@ -12,7 +14,7 @@ import {
 export class TableComponent implements OnInit {
   @Input() ListOfData: any;
   @Input() listOfColumns: any;
-
+  @Output() onClickRows = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
@@ -26,5 +28,8 @@ export class TableComponent implements OnInit {
       sortOrder = null;
     }
     return sortOrder
+  }
+  clickRow(ev:any){
+    this.onClickRows.emit(ev)
   }
 }

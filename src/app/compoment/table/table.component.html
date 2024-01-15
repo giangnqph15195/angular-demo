@@ -21,9 +21,9 @@
   </thead>
   <tbody>
     <ng-container *ngFor="let row of basicTable.data">
-    <tr   ngClass='row-table-selected'>
-      <td *ngFor="let col of listOfColumns">{{ row[col["field"]] }}</td>
-    </tr>
+      <tr ngClass="row-table-selected" (click)="clickRow(row)">
+        <td *ngFor="let col of listOfColumns">{{ row[col["field"]] }}</td>
+      </tr>
     </ng-container>
   </tbody>
 </nz-table>

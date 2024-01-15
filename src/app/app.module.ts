@@ -88,6 +88,7 @@ import { LabelVerticalComponent } from './compoment/labels/label-vertical/label-
 import { InputTextComponent } from './compoment/inputs/input-text/input-text.component';
 import { InputNumberComponent } from './compoment/inputs/input-number/input-number.component';
 import { InputTextareaComponent } from './compoment/inputs/input-textarea/input-textarea.component';
+import { ButtonBaseComponent } from './compoment/button/button-base/button-base.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { InputTextareaComponent } from './compoment/inputs/input-textarea/input-
     InputNumberComponent,
     LabelHorizontalComponent,
     LabelVerticalComponent,
+    ButtonBaseComponent,
   ],
   imports: [
     BrowserModule,
