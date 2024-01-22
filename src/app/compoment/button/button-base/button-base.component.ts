@@ -38,8 +38,6 @@ export class ButtonBaseComponent implements OnInit {
   constructor(protected cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes?.rights?.currentValue) {
-    }
   }
 
   ngAfterViewInit() {
